@@ -12,6 +12,9 @@
   <div id="app">
     <input type="text" v-on:input='changeText'>
     <p>In the title we can see the next text: <span>{{ text }}</span></p>
+    <p>Here we use a method: <span>{{ sayHello()}}</span></p>
+    <p>Here we are echoig a Vue property with this and a method: <span>{{showTextFromData()}}</span></p>
+    <p><a v-bind:href="link">Google</a></p>
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,15 +24,27 @@
 
     data: {
       text: 'random text',
+      textFromData: 'text from data',
+      link: 'http://google.com',
     },
 
     methods: {
       changeText(event){
         this.text = event.target.value;
+      },
+
+      sayHello(){
+        return 'Hello';
+      },
+
+      showTextFromData(){
+        return this.textFromData;
       }
+
     }
   });
   //in every JS there is automatically an Event object. This can be passed as an argument thorugh our changeText(). This Event object has a target property, always. This target is containing the value that the user has entered into our input field.
+  // we can't use {{ }} to echo out a <a href... link. Won't work. We must use v-bind (aka :) to bind our link property to the href link
   </script>
   
 </body>
