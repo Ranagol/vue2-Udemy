@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Test</h1>
+
+  <div id="app">
+    <input type="text" v-on:input='changeText'>
+    <p>In the title we can see the next text: <span>{{ text }}</span></p>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+  new Vue({
+    el: '#app',
+
+    data: {
+      text: 'random text',
+    },
+
+    methods: {
+      changeText(event){
+        this.text = event.target.value;
+      }
+    }
+  });
+  //in every JS there is automatically an Event object. This can be passed as an argument thorugh our changeText(). This Event object has a target property, always. This target is containing the value that the user has entered into our input field.
+  </script>
+  
+</body>
+</html>
