@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <title>Vue2 - Udemy</title>
+  <title>Vue2</title>
 </head>
 <body>
   <div class="container" id="app">
@@ -14,27 +14,21 @@
     <p>{{ name }}</p>
     <hr>
 
-    <button class="btn btn-info" v-on:click="counter++">Increase first</button>
+    <button class="btn btn-info" v-on:click="counter++">Increase first(computedWay and methodWay both will be activated)</button>
 
     <button class="btn btn-info" v-on:click="counter--">Decrease first</button>
 
     <hr>
 
-    <button class="btn btn-primary" v-on:click="secondCounter++">Increase second</button>
+    <button class="btn btn-primary" v-on:click="secondCounter++">Increase second (computedWay won't be activated)</button>
 
 
     <p>Counter first: {{ counter }}</p>
+    <p>Counter second: {{ secondCounter }}</p>
     <p>Result for methodWay(): {{ methodWay() }}</p>
-    <p>Result for computedWay: {{ computedWay }}</p>  
-      
-
+    <p>Result for computedWay: {{ computedWay }}</p> 
 
   </div>
-
-
-
-
-
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
   <script src="main.js"></script>
