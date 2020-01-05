@@ -10,8 +10,15 @@
 </head>
 <body>
   <div class="container" id="app">
-    <div class="demo" @click="attachRed = !attachRed"></div><!--on click, the attachRed will be equal the exact opposite of attachRed. (if it was false, it will be true on click, if it was true, it will be false on click)-->
-    <div class="demo"></div>
+
+    <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+
+    <!--on click, the attachRed will be equal the exact opposite of attachRed. (if it was false, it will be true on click, if it was true, it will be false on click). So, on click we are changing the attachRed property-->
+    <!--:class="{red: attachRed"} activates the .red class from our CSS, IF attachRed is currently TRUE-->
+    <!--.demo was the default grey class, and now we are switching between .demo and .red-->
+
+    <div class="demo" :class="{red: attachRed}"></div>
+    
     <div class="demo"></div>
   </div>
 
