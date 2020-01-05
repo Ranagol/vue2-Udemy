@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" >
+    <button @click="counter+2">Click me</button><!--we can use simple JS codes between the " "-->
+    
+    <button @click='increase(2)'>Click me</button><!--yes, we can add () and an argument '2' to our function here.-->
+
+    <p>{{ counter }}</p>
+
+    <!--on mouse movement, update the coordinates. Except, when the mouse is over the deadspot span, then we don't want our coordinates to be updated-->
+    <div style="background-color:grey; height: 200px; width: 50%;" v-on:mousemove="updateCoordinates">
+      Coordinates: x = {{ x }}, y = {{ y }}. - 
+      <span v-on:mousemove.stop="">DEAD SPOT</span><!-- notice the .stop . This is how we can stop an event (modify it). There is one more important modifier, and that is the .prevent, which will prevent the event to happen-->
+      
+      <p>Testing the keyup event
+        <input type="text" v-on:keyup.enter="alertMe"><!--key up event listener. When the enter key goes up, activate the alertMe()-->
+      </p>
+      
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+  new Vue({
+    el: '#app',
+    data:{
+      counter: 0,
+      x: 0,
+      y: 0,
+    },
+
+    methods:{
+      increase(number){//in this case, we want to determine with our argument, how much should be the counter increased. 
+        this.counter +=number;
+      },
+
+      updateCoordinates(event){//Task: we want to echo out the mouse coordinates. For this, we will need the event object, which is automatically created by javascript. We are receving this event as an argument. event.clientX and event.clientY are default properties of the event object. All this will only work in the #app div.
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+
+      /*
+      doNotUpdate(event){
+        event.stopPropagation();//stopPropagation is a built in event method, that we are using now to stop the coordinate updating. This is an event modifier. This is one way to stop the coordinate updating.
+      }
+      */
+
+      alertMe(){
+        alert('Alert');
+      }
+    }
+  });
+  
+  </script>
+</body>
+</html>
