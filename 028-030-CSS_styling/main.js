@@ -2,12 +2,13 @@ new Vue({
   el: '#app',
 
   data:{
-    attachRed: false,//when starting, this will be grey first.
+    attachRed: false,
+    color: 'green',
   },
 
   computed:{
-    divClasses(){//this will return a JS object that contains CSS code
-      return{
+    divClasses(){//with this we can switch color between red and blue
+      return{//this will return a JS object that contains CSS code
         red: this.attachRed,//return red if attachRed is true
         blue: !this.attachRed,//return blue if attachRed is false
       }

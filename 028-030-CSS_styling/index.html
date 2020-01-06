@@ -18,8 +18,14 @@
     <!--.demo was the default grey class, and now we are switching between .demo and .red-->
 
     <div class="demo" :class="{red: attachRed}"></div>
+
+    <hr>
+
+    <!--this last div (below) is able to change its color depending what we write into our inbox-->
     
-    <div class="demo"></div>
+    <div class="demo" :class="[color,{red: attachRed}]"></div><!--{red: attachRed} is an additional condition here-->
+    
+    <input type="text" v-model="color">
   </div>
 
 
