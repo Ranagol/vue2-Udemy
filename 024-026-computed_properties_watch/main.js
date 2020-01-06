@@ -17,7 +17,7 @@ new Vue({
 
     counter: function(value){//Here we set up a property name that we want to watch. So, this counter is not a new duplicate property! We just watch it here. Then, we specifiy a function that we want to be executed, whenever our counter is changed. the value here is automatically passed by Vue. This value is the value of the change that happened to the counter. However, using computed propeties is a better solution, because it is more optimized.
       
-      var vm = this;//we have to store our Vue instance in a separate variable
+      var vm = this;//we have to store our Vue instance in a separate variable, otherwise it won't be accessible from here (scope issue?)
       
       setTimeout(function(){
 
@@ -25,8 +25,6 @@ new Vue({
 
       }, 2000);//we want to reset our counter two seconds, after it value changed. So we watch th counter in the watch object, and activate our callback function, when the counter has changed, with a delay of 2 seconds.
       }
-      
-
   },
 
   methods:{//contains all the methods
@@ -35,9 +33,4 @@ new Vue({
       return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
     }//this method will be called always, repeatedly, because Vue doesn't know if he needs to update this. Even if we click on the 'Increase second' button (which does not have any role here) Vue will have to check. Which is waste of resources. Vue won't activate computedWay() if we click on the 'Increase second' button, but it will (unneccesarily) activate methodWay(). So, hitting the 'Increase second', and activating the computedWay computed property is the right way.
   },
-
-
-
-
-
 });

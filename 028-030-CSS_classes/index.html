@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Vue2 - Udemy</title>
+</head>
+<body>
+  <div class="container" id="app">
+
+    <div class="demo" :class="{red: attachRed}">1</div>
+    <!--:class="{red: attachRed"} activates the .red class from our CSS, IF attachRed is currently TRUE-->
+
+
+    <div class="demo" @click="attachRed = !attachRed" :class="divClasses">2</div>
+
+    <!--on click, the attachRed will be equal the exact opposite of attachRed. (if it was false, it will be true on click, if it was true, it will be false on click). So, on click we are changing the attachRed property. -->
+    
+    <!--The divClasses() is returning an object that contains two possible CSS options (blue and red), that will mutually exclusively turning on and off, depending if the attachRed is true or false-->
+       
+    <!--demo was the original class. It seems to me that this is overwritten with this option, which is switching between .blue and .red-->
+
+    
+
+    <!--this last div #3 (below) is able to change its color depending what we write into our inbox, and depending of the state of the attachRed. 
+      1-If there is nothing written in the input, and the attachRed is false it will be grey (.demo). 
+      2-If the attachRed is true and nothing is written in the input, this div will be red. (demo will be overwritten)
+      3-If a color is written into the input (example: green), then the div will have green color. (demo will be overwritten again)-->
+    
+    <div class="demo" :class="[color,{red: attachRed}]">3</div><!--{red: attachRed} is an additional condition here, it will only work if nothing is written in the input-->
+    
+    <input type="text" v-model="color">
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="main.js"></script>
+</body>
+</html>

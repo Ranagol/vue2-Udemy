@@ -7,7 +7,7 @@ new Vue({
   },
 
   computed:{
-    myStyle(){
+    myStyle(){//here we are setting up our style object
       return {
         backgroundColor: this.color,
         width: this.width + 'px'

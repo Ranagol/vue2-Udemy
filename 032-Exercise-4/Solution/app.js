@@ -1,24 +1,30 @@
 new Vue({
   el: '#exercise',
+
   data: {
-  effectClasses: {
-    highlight: false,
+    effectClasses: {
+      highlight: false,
       shrink: true
     },
-  float: 'float',
+
+    float: 'float',
     userClass: '',
     isVisible: true,
+      
     myStyle: {
-    width: '100px',
-      height: '150px',
-      backgroundColor: 'gray'
+      width: '100px',
+        height: '150px',
+        backgroundColor: 'gray'
     },
+
     progressBar: {
-    width: '0px',
-      backgroundColor: 'red'
+      width: '0px',
+        backgroundColor: 'red'
     }
   },
+
   methods: {
+    
     startEffect: function() {
     var vm = this;
       setInterval(function() {
@@ -26,10 +32,10 @@ new Vue({
         vm.effectClasses.shrink = !vm.effectClasses.shrink;
       }, 1000);
     },
+
     startProgress: function() {
     var vm = this;
       var width = 0;
-     
     setInterval(function() {
       width = width + 10;
       vm.progressBar.width = width + 'px';

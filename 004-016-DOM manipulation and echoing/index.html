@@ -11,13 +11,13 @@
 
   <div id="app">
     <input type="text" v-on:input='changeText'>
-    <h3 v-once>{{ title }}</h3><!--this will be rendered only once, and later it wont be updated. With v-once we can stick to the initial value, that will not be dynamically updated. -->
+    <h3 v-once>{{ title }}</h3><!--this will be rendered only once, and later it wont be updated. With v-once we can stick to the initial value, that will not be dynamically updated later, when the given value has changed -->
     <p>In the title we can see the next text: <span>{{ text }}</span></p>
     <p>Here we use a method sayHello(): <span>{{ sayHello()}}</span></p>
     <p>Here we are echoig a Vue property with this and a method: <span>{{showTextFromData()}}</span></p>
-    <p><a v-bind:href="link">Google</a></p><!--binding example-->
+    <p><a v-bind:href="link">Google</a></p><!--binding example.  we can't use {{ }} to echo out a <a href... link. Won't work. We must use v-bind (aka :) to bind our link property to the href link.-->
     <hr>
-    <p v-html="finishedLink"></p><!--v-html will print out only the Google string as a link, not the whole <a> tag -->
+    <p v-html="finishedLink"></p><!--v-html will print out only the Google string as a link, not the whole <a> tag. Notice that in the finishedLink we have stored a complete <a> tag -->
     
   </div>
   
@@ -35,7 +35,7 @@
     },
 
     methods: {
-      changeText(event){
+      changeText(event){//in every JS there is automatically an Event object. This can be passed as an argument thorugh our changeText(). This Event object has a target property, always. This target is containing the value that the user has entered into our input field.
         this.text = event.target.value;
       },
 
@@ -50,8 +50,8 @@
 
     }
   });
-  //in every JS there is automatically an Event object. This can be passed as an argument thorugh our changeText(). This Event object has a target property, always. This target is containing the value that the user has entered into our input field.
-  // we can't use {{ }} to echo out a <a href... link. Won't work. We must use v-bind (aka :) to bind our link property to the href link.
+  
+  //
   </script>
   
 </body>

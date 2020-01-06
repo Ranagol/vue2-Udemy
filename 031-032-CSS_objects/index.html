@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Vue2 - Udemy</title>
+</head>
+<body>
+  <div class="container" id="app">
+
+    <div class="demo" :style="{ backgroundColor: color} "></div><!--this is one way how we can change style, without actual CSS file. We simply put our CSS data into :style="{ }", but here we must use camelCase-->
+
+    <div class="demo" :style="myStyle"></div><!-- We use :style binding, and our style object is prepared in the computed properties-->
+    
+    <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div><!--here we set up myStyle from computed properties.But, we additionally and dynamically set up the height for this div. This height should be exactly as much the width is. Don't forget, the width is set up through the input field-->
+
+    <hr>
+    <input type="text" v-model="color"><!--background color setting-->
+    
+    <input type="text" v-model="width"><!--div height and width setting-->
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="main.js"></script>
+</body>
+</html>
