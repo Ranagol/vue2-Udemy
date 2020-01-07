@@ -41,6 +41,12 @@
       <li v-for="n in 10">{{ n }}</li>
     </ul>
 
+    <h5>Keeping track of elements(why we need to use unique keys)</h5>
+    <ul>
+      <li v-for="(ingredient, i) in ingredients" :key="">{{ ingredient }} - array key: ({{ i }})</li>
+    </ul>
+    <button @click="addNew">addNew</button>
+    <!--if we want to make Vue be aware of the position of the element and the value of the element (here: looped list item), we have to assign a unique key to the list item (:key=...). It is better not to use the index as a key. -->
 
   
 

@@ -7,5 +7,11 @@ new Vue({
       {name: 'Max', age: 27, color: 'red'},
       {name: 'Anna', age: 'unknown', color: 'blue' },
     ]
+  },
+
+  methods:{
+    addNew(){
+      this.ingredients.push('spices');
+    }
   }
 })
