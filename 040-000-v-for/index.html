@@ -10,7 +10,39 @@
 </head>
 <body>
   <div class="container" id="app">
+    <h5>SIMPLE LOOPING + INDEX</h5>
+    <ul>
+      <li v-for="(ingredient, i) in ingredients">{{ ingredient }} - array key: ({{ i }})</li><!--task: print the array key to, beside the array value. So we are extracting i (we called the index i) from the array, with this part: (ingredient, i). The order is important, the element always goes first, the index always goes second. -->
+      <!--notice that v-for goes into the li, not into the ul element-->
+    </ul>
 
+    <h5>LOOP PRINT THE INDEX INTO A <p> AND PRINT THE VALUE INTO A h3</h5>
+    <template v-for="(ingredient, i) in ingredients">
+      <h3>{{ ingredient }}</h3>
+      <p>{{ i }}</p>
+    </template><!--template is again a solution, because it does not apper in the DOM-->
+    
+    <h5>LOOPING OBJECTS</h5>
+    <ul>
+      <li v-for="person in persons">{{ person.name }}</li>
+    </ul>
+
+    <h5>LOOP THROUGH ALL properties IN THE OBJECT + key + index</h5><!--in JS arrays have indexes, objects have keys.-->
+    <ul>
+      <li v-for="person in persons">
+        <span v-for="(value, key, index) in person">
+          {{ key }}: {{ value }} ({{ index }}),
+        </span><!--The order is important, the element always goes first, the index always goes second. -->
+      </li>
+    </ul>
+
+    <h6>Looping thorugh every number from 1 till ten</h6>
+    <ul>
+      <li v-for="n in 10">{{ n }}</li>
+    </ul>
+
+
+  
 
 
   </div>
