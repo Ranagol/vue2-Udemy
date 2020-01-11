@@ -1,0 +1,27 @@
+npm install -g vue-cli -- installing npm on our computer globally avaliable
+vue init webpack-simple vue-cli -- how to start a vue cli project. This will install a webpack-simple package, into the newly created vue-cli folder (we gave this name, but we could have given any other random name)
+
+ To get started:
+
+     cd vue-cli -- in this case, our project is called vue-cli, so
+     npm install
+     npm run dev -- this will start our development server, that is needed to run our app
+
+assets: our files and codes will be here
+
+babelrs: allows us to use ES6, will translate it to ES5 what can be understand by any browser
+
+index.html: the file that actually gets served, what we see on our monitor
+
+package.json: dependencies, whatever that means
+
+webpack.config.js: is responsible for building everything
+
+index.html/src="/dist/build.js": this is a virtual, non-existent file, that plays the role of a JS file in html. It will contain our JS and Vue logic. When we run npm run build, then we will create the dist folder and the build.js file, this is when we build our app for production.
+
+src/main.js: this is the first file that will be executed when the src="/dist/build.js" i called. We import here Vue and App.vue, and our Vue instance is here. In the main.js we have this:
+    render: h => h(App)//this is an ES6 arrow function. 'h' before the => is the argument, h after the => is function?. This function will render a template, int the place where our el: '#app' is. Note: template is what the user sees on the webpage.
+
+App.vue: our actual Vue application is here. We have a template on the top. Script has our Vue code for this template above. And we have styling on the bottom. Style in not a must, but template is a must. With these three we have a valid single file template, and all together this is a Vue instance. We outsource the template and the script logic from different files. All this will be compiled to JS code, and after that, all this will be rendered with the render: h => h(App). Reminder: the render: h => h(App) is just a template, in the end.
+
+In the App.vue, in the script part we have the export default object.
