@@ -9,7 +9,7 @@
             <div class="col-xs-12 col-sm-6">
 
                 <!--UserDetail child component -->
-                <app-user-detail></app-user-detail>
+                <app-user-detail :myName="name"></app-user-detail><!--Here we are passing the username from the User component to the UserDetail component. :myName=... is binded to the name property in the data. myName is what we have defined in UserDetails as an expected. ...="name" is a property from data. -->
 
             </div>
             <div class="col-xs-12 col-sm-6">
@@ -30,7 +30,7 @@
 
         data: function(){//in order for the changeName() to work, we need the data section, that will be put into the export.
             return {
-                name: 'Max',
+                name: 'Max'
             };
         },
 

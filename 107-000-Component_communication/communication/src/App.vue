@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
+                
                 <!--User component (parent for UserEdit and UserDetail) -->
                 <app-user></app-user>
             </div>
