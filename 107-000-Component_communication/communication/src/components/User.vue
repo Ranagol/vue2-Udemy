@@ -12,7 +12,8 @@
                 <!--UserDetail child component -->
                 <app-user-detail 
                     :myName="name" @nameWasReset="name=$event"
-                    :resetFn="resetName">
+                    :resetFn="resetName" 
+                    :userAge="age">
                 </app-user-detail><!--Here we are passing the username from the User component to the UserDetail component. :myName=... is binded to the name property in the data. myName is what we have defined in UserDetails as an expected. ...="name" is a property from data. -->
                 <!--@nameWasReset is an ordinary event listener, but now it is listening only for the this.$emit('nameWasReset'). -->
                 <!--$event refers to the data which was passed through the event. (the second argument in the this.$emit('nameWasReset', this.myName)) -->
@@ -21,7 +22,12 @@
             <div class="col-xs-12 col-sm-6">
 
                 <!--UserEdit child component -->
-                <app-user-edit></app-user-edit>
+                <app-user-edit 
+                    :userAge="age"
+                    @ageWasEdited="age=$event">
+                
+                </app-user-edit><!-- with the :userAge="age" we are sending the age property from this User comp. to the UserEdit comp, into the props. We are also sending the age to the UserDetail too.-->
+                <!-- with the @ageWasEdited="age=$event" we are upating the age, receiving it from the UserEdit -->
 
             </div>
         </div>
@@ -36,7 +42,8 @@
 
         data: function(){//in order for the changeName() to work, we need the data section, that will be put into the export.
             return {
-                name: 'Max'
+                name: 'Max',
+                age: 27
             };
         },
 

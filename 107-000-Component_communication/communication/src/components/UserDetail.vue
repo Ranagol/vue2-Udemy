@@ -3,6 +3,7 @@
         <h3>You may view the User Details here</h3>
         <p>Many Details</p>
         <p>User name in the child: {{ switchName() }}</p><!-- we need to get this myName from the User component, in order for the switchName to be able to work-->
+        <p>User age: {{ userAge }}</p>
 
         <button @click="resetName">Reset name</button><!--We want to send info from the child to the parent. If this button is clicked, we want the username to be resetted in the User component -->
 
@@ -20,7 +21,9 @@
                 //default: 'Anything'//if there is no requred, and if we receive an empty string, then the default will be 'Anything' 
             },
 
-            resetFn: Function//this is a validation, resetFn must be a function. This resetFn will be called with a button.
+            resetFn: Function,//this is a validation, resetFn must be a function. This resetFn will be called with a button.
+
+            userAge: Number
         },
         //props means properties, and by this we think about properties that were set up by other components, set from outside. So, props are used for communication between components. Props are similar like data, methods, components... Props will contain properties, which will be settable from outside. 'name' in the props must match {{ name }}. All this will give us acces to name, but we are not passing the name yet. This passing is happening in the User component, with the <app-user-detail :name="name"></app-user-detail>. 
         
