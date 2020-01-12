@@ -2,7 +2,9 @@
     <div class="component">
         <h3>You may view the User Details here</h3>
         <p>Many Details</p>
-        <p>User name: {{ switchName() }}</p><!-- we need to get this myName from the User component, in order for the switchName to be able to work-->
+        <p>User name in the child: {{ switchName() }}</p><!-- we need to get this myName from the User component, in order for the switchName to be able to work-->
+
+        <button @click="resetName">Reset name</button><!--We want to send info from the child to the parent. If this button is clicked, we want the username to be resetted in the User component -->
     </div>
 </template>
 
@@ -24,6 +26,12 @@
                 return this.myName.split("").reverse().join(""); //with this.myName we can access myName like any other data property. With split("").reverse().join("") we will split myName by characters, reverse the order of the characters, and join them together. Things in props can be echoed, accessed, used for methods just like any other property
                 
                 //obviously this data will change, but the type of the data must not change. Our switchName() can only work with strings. So, if we pass a number or a boolean, our app will break. We must prevent this. So, we must validate the props that are coming in.
+            },
+
+            resetName(){
+                this.myName = 'Max';//this will reset the name back to the old value. The only problem is, that this is happening in the child component, and the parent component doesn't know about it...
+
+                this.$emit('nameWasReset', this.myName)// ...We must inform the parent component. We must emit a custom event. $emit() is a built in method in Vue. Here we can also pass a second argument, and now this will be the this.myName. In the User component something will listen to this event.
             }
         }
     }

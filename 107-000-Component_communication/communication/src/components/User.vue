@@ -3,13 +3,16 @@
         <h1>The User Component</h1>
         <p>I'm an awesome User!</p>
         <button @click="changeName">Change my name</button>
+        <p>Name in the parent: {{ name }}</p>
 
         <hr>
-        <div class="row"><!-- the User is the parent component. The UserDetail and the UserEdit are the child components. We want to pass information from the parent User component, to the child. To do this, we will have a button in the User, that will change the user name, and that will be passed to the UserDEtail, from the User. We don't want to echo the user name in the User component, instead we want this to be echoed in the UserDetail. -->
+        <div class="row"><!-- the User is the parent component. The UserDetail and the UserEdit are the child components. We want to pass information from the parent User component, to the child. To do this, we will have a button in the User, that will change the user name. This user name will be passed to the UserDEtail, from the User. We don't want to echo the user name in the User component, instead we want this to be echoed in the UserDetail. -->
             <div class="col-xs-12 col-sm-6">
 
                 <!--UserDetail child component -->
-                <app-user-detail :myName="name"></app-user-detail><!--Here we are passing the username from the User component to the UserDetail component. :myName=... is binded to the name property in the data. myName is what we have defined in UserDetails as an expected. ...="name" is a property from data. -->
+                <app-user-detail :myName="name" @nameWasReset="name=$event"></app-user-detail><!--Here we are passing the username from the User component to the UserDetail component. :myName=... is binded to the name property in the data. myName is what we have defined in UserDetails as an expected. ...="name" is a property from data. -->
+                <!--@nameWasReset is an ordinary event listener, but now it is listening only for the this.$emit('nameWasReset'). -->
+                <!--$event refers to the data which was passed through the event. (the second argument in the this.$emit('nameWasReset', this.myName)) -->
 
             </div>
             <div class="col-xs-12 col-sm-6">
