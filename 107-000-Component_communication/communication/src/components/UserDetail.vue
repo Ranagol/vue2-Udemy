@@ -1,0 +1,19 @@
+<template>
+    <div class="component">
+        <h3>You may view the User Details here</h3>
+        <p>Many Details</p>
+        <p>User name: {{ name }}</p><!-- we need to get this name from the User component-->
+    </div>
+</template>
+
+<script>
+    export default {
+
+    }
+</script>
+
+<style scoped>
+    div {
+        background-color: lightcoral;
+    }
+</style>
