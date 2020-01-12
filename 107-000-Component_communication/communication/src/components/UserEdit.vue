@@ -6,6 +6,7 @@
 </template>
 
 <script>
+//there is no direct child-child communications. Child can communicate with another child only through the parent.
 </script>
 
 <style scoped>

@@ -5,6 +5,8 @@
         <p>User name in the child: {{ switchName() }}</p><!-- we need to get this myName from the User component, in order for the switchName to be able to work-->
 
         <button @click="resetName">Reset name</button><!--We want to send info from the child to the parent. If this button is clicked, we want the username to be resetted in the User component -->
+
+        <button @click="resetFn()">Reset name</button><!--this is an alternative instead of custom event listeners, we can pass info between the parent and the child with callback functions too. -->
     </div>
 </template>
 
@@ -16,7 +18,9 @@
                 type: String,// example for props validation. myName must be a string. Props has to be an object, if we validate it, it must not be an array. All this won't prevent the error, but we will receive a warning in the consol.
                 required: true// this was our app won't accept empty '' strings
                 //default: 'Anything'//if there is no requred, and if we receive an empty string, then the default will be 'Anything' 
-            }
+            },
+
+            resetFn: Function//this is a validation, resetFn must be a function. This resetFn will be called with a button.
         },
         //props means properties, and by this we think about properties that were set up by other components, set from outside. So, props are used for communication between components. Props are similar like data, methods, components... Props will contain properties, which will be settable from outside. 'name' in the props must match {{ name }}. All this will give us acces to name, but we are not passing the name yet. This passing is happening in the User component, with the <app-user-detail :name="name"></app-user-detail>. 
         
