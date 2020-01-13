@@ -10,15 +10,16 @@
 </template>
 
 <script>
-//there is no direct child-child communications. Child can communicate with another child only through the parent.
 
+    import { eventBus } from '../main';//import the eventBus from main.js
 
     export default{
         props: ['userAge'],
         methods:{
             editAge(){
                 this.userAge = 30;//the age is stored in the parent component, we will receive it into the props, under 'userAge'
-                this.$emit('ageWasEdited', this.userAge );//we are sending this event and the userAge to the User
+                //this.$emit('ageWasEdited', this.userAge );//we are sending this event and the userAge to the User. But. We don't need this any more, because we will use eventBus
+                event.Bus.$emit('ageWasEdited', this.userAge );
             }
         }
     }

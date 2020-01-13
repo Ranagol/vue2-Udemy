@@ -12,6 +12,8 @@
 </template>
 
 <script>
+    import { eventBus } from '../main';//import the eventBus from main.js
+
     export default {
         props: {
             myName: {
@@ -40,6 +42,16 @@
 
                 this.$emit('nameWasReset', this.myName)// ...We must inform the parent component. We must emit a custom event. $emit() is a built in method in Vue. Here we can also pass a second argument, and now this will be the this.myName. In the User component something will listen to this event.
             }
+        },
+
+        created(){//this is a life cycle hook, that is needed for the event bus. 
+
+            eventBus.$on('ageWasEdited', (age) => {
+                
+                this.userAge = age;//make the userAge from UserDetail = to age, aka userAge from UserEdit
+
+            });//We want a listener here, that listens to event.Bus.emit('ageWasEdited', this.userAge );
+            //(age) => { } this here is an ES6 callback, that will be executed when the emit will happen. This callback always gets the data that we have sent when emiting. This data is the 'this.userAge' from the UserEdit. 
         }
     }
 </script>
