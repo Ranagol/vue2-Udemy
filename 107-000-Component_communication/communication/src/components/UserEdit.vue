@@ -19,7 +19,8 @@
             editAge(){
                 this.userAge = 30;//the age is stored in the parent component, we will receive it into the props, under 'userAge'
                 //this.$emit('ageWasEdited', this.userAge );//we are sending this event and the userAge to the User. But. We don't need this any more, because we will use eventBus
-                event.Bus.$emit('ageWasEdited', this.userAge );
+                //event.Bus.$emit('ageWasEdited', this.userAge );//we can comment this out too, because we put the $emit logic into the eventBus, on the main.js page. Instead of this, we can do the next:
+                eventBus.changeAge(this.user.Age);
             }
         }
     }
