@@ -8,24 +8,26 @@
                     <div class="form-group">
                         <label for="email">Mail</label>
                         <input
-                                type="text"
-                                id="email"
-                                class="form-control"
-                                v-model="email">
-                    </div>  
+                            type="text"
+                            id="email"
+                            class="form-control"
+                            v-model.lazy="userData.email">
+                    </div><!--v-model="userData.email"--this is the way how we can access grouped data. v-model updates with every key stroke. Sometimes we could want to update only when we finished the whole word, and moved to the next form field. We can achieve this with the .lazy . lazy will trigger only when we clicked somewhere else.-->
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input
-                                type="password"
-                                id="password"
-                                class="form-control">
+                            type="password"
+                            id="password"
+                            class="form-control"
+                            v-model="userData.password">
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
                         <input
-                                type="number"
-                                id="age"
-                                class="form-control">
+                            type="number"
+                            id="age"
+                            class="form-control"
+                            v-model="userData.age">
                     </div>
 
                 </div>
@@ -101,12 +103,12 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>Your Data</h4>
+                        <h4>Your data displayed</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Mail: {{ email }}</p>
-                        <p>Password:</p>
-                        <p>Age:</p>
+                        <p>Mail: {{ userData.email }}</p><!-- this is how we can echo grouped data -->
+                        <p>Password: {{ userData.password }} </p>
+                        <p>Age: {{ userData.age }}</p>
                         <p>Message: </p>
                         <p><strong>Send Mail?</strong></p>
                         <ul>
@@ -126,7 +128,12 @@
     export default {
         data(){
             return{
-               email: '', 
+                userData:{//this is how we can group data in the data section
+                    email: '',
+                    password: '',
+                    age:27
+                }
+                
             }
         }
     }
