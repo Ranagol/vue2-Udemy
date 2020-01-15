@@ -70,14 +70,17 @@
                         <input
                             type="radio"
                             id="male"
-                            value="Male"> Male
+                            value="Male"
+                            v-model="gender"> Male
                     </label>
                     <label for="female">
                         <input
                             type="radio"
                             id="female"
-                            value="Female"> Female
+                            value="Female"
+                            v-model="gender"> Female
                     </label>
+                    <!--The difference between checkboxes and radio buttons is, that we can select only one button. (Example: male/female). Here we are using the same v-model for the male and the female. By doing this, we are letting Vue to know, that these two radio buttons belong together, and Vue will do everything else automatically.-->
                 </div>
             </div>
             <div class="row">
@@ -85,9 +88,14 @@
                     <label for="priority">Priority</label>
                     <select
                         id="priority"
-                        class="form-control">
-                        <option></option>
+                        class="form-control"
+                        v-model="selectedPriority">
+                        <option 
+                            v-for="priority in priorities" 
+                            :selected="priority == 'medium'">{{ priority }}
+                        </option>
                     </select>
+                    <!--We want 2 things here. We want to get the value and we want Vue to populate the dropdown menu with options. We want to add options dynamically with v-for="priority in priorities". With the :selected="priority == 'medium'  we are deciding what should be the default displayed value in the dropdown menu. Important: we don't use v-model in the <option></option>, we use it in the <select></select>. So, the v-model="selectedPriority" in the select tag is getting us the value. -->
                 </div>
             </div>
             <hr>
@@ -101,7 +109,7 @@
         </form>
         <hr>
 
-        <!-- DATA DISPLAYING -->
+        <!------------------------------ DATA DISPLAYING---------------------- -->
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
@@ -117,8 +125,8 @@
                         <ul>
                             <li v-for="item in sendMail">{{ item }}</li>
                         </ul>
-                        <p>Gender:</p>
-                        <p>Priority:</p>
+                        <p>Gender:{{ gender }}</p>
+                        <p>Priority: {{ selectedPriority }}</p>
                         <p>Switched:</p>
                     </div>
                 </div>
@@ -136,9 +144,11 @@
                     password: '',
                     age:27
                 },
-                message:'A new message',//this is just a preppopulated text here, this will change...
+                message:'A new message',//this is just a prepopulated text here, this will change...
                 sendMail: [],
-                
+                gender: 'Male',
+                selectedPriority: 'high',//this is the selected priority, and it is set to high by default. This 'high' default setting will overwrite the 'medium' default setting, written in the <option></option>
+                priorities: ['high', 'medium', 'low'],//these will be our options in the Priority dropdown menu
             }
         }
     }
