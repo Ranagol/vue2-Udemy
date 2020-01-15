@@ -12,12 +12,24 @@
       return{
         counter:0,
       };
-    }
+    },
+
+    destroyed(){//this won't work after we start using the <keep-alive></keep-alive>
+      console.log('Destroyed');
+    },
+
+    deactivated(){//this lifecycle hook will be activated when we load another component instead of this component
+      console.log('Deactivated');
+    },
+
+    activated(){//this lifecycle hook will be activated when we load this component
+      console.log('activated');
+    },
+
+
   }
 </script>
 
 
 <style scoped>
-
-
 </style>

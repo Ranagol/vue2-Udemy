@@ -12,8 +12,8 @@
                     <component :is="selectedComponent">
                         <p>Default component</p>
                     </component><!-- this is a reserved tag for dynamic Vue component, that will allow us to change component display. We binded this component to selectedComponent property with this part: :is="selectedComponent" -->
-                </keep-alive><!--Problem: the switched component is being destroyed, so it can't remember things. Solution: <keep-alive></keep-alive>-->
-
+                </keep-alive>
+<!--Problem: the switched component is being destroyed, so it can't remember things. Solution: <keep-alive></keep-alive> With this we can keep alive our component, so if we switch it back again, it will rembember his previous state. But, we have a new problem now: the destroyed() lifecycle won't work any more, since nothing is destroyed.-->
 
 <!--We want to pass this block of code with html tags to the App.vue all together. Solution: slots -->
 <!--
