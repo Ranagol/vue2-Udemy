@@ -11,8 +11,11 @@
                             type="text"
                             id="email"
                             class="form-control"
-                            v-model.lazy="userData.email">
-                    </div><!--v-model="userData.email"--this is the way how we can access grouped data. v-model updates with every key stroke. Sometimes we could want to update only when we finished the whole word, and moved to the next form field. We can achieve this with the .lazy . lazy will trigger only when we clicked somewhere else.-->
+                            :value="userData.email"
+                            @input="userData.email = $event.target.value">
+                    </div>
+<!--v-model="userData.email"--this is the way how we can access grouped data. v-model updates with every key stroke. Sometimes we could want to update only when we finished the whole word, and moved to the next form field. We can achieve this with the .lazy . lazy will trigger only when we clicked somewhere else.-->
+<!-- we can change v-model="userData.email" to a v-bind and a @input element. It will be the same. $event.target.value is the way how we can acces the data from the input field.-->
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input
@@ -96,21 +99,26 @@
                         </option>
                     </select>
                     <!--We want 2 things here. We want to get the value and we want Vue to populate the dropdown menu with options. We want to add options dynamically with v-for="priority in priorities". With the :selected="priority == 'medium'  we are deciding what should be the default displayed value in the dropdown menu. Important: we don't use v-model in the <option></option>, we use it in the <select></select>. So, the v-model="selectedPriority" in the select tag is getting us the value. -->
+
+                    <!--*******OUR CUSTOM SWITCH****** -->
+                    <app-switch v-model="dataSwitch"></app-switch>
+
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <button
-                        class="btn btn-primary">Submit!
-                    </button>
+                        class="btn btn-primary"
+                        @click.prevent="submitted">Submit!
+                    </button><!--Right now we don't use this submit button. We need to connect it with our data. We don't want this button to submit to the server, because we want to handle this data in Vue. So we prevent this default behaviour, and let Vue take care of things. -->
                 </div>
             </div>
         </form>
         <hr>
 
         <!------------------------------ DATA DISPLAYING---------------------- -->
-        <div class="row">
+        <div class="row" v-if="isSubmitted">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -127,7 +135,7 @@
                         </ul>
                         <p>Gender:{{ gender }}</p>
                         <p>Priority: {{ selectedPriority }}</p>
-                        <p>Switched:</p>
+                        <p>Switched:{{ dataSwitch }}</p>
                     </div>
                 </div>
             </div>
@@ -136,6 +144,9 @@
 </template>
 
 <script>
+//We want to build our custom input element.
+    import Switch from './Switch.vue';
+
     export default {
         data(){
             return{
@@ -149,7 +160,19 @@
                 gender: 'Male',
                 selectedPriority: 'high',//this is the selected priority, and it is set to high by default. This 'high' default setting will overwrite the 'medium' default setting, written in the <option></option>
                 priorities: ['high', 'medium', 'low'],//these will be our options in the Priority dropdown menu
+                dataSwitch: true,//this is needed for the custom switch
+                isSubmitted: false,//we will use this to conditionally show the "Your data displayed" section
             }
+        },
+
+        methods:{
+            submitted(){
+               this.isSubmitted = true; 
+            }
+        },
+
+        components: {
+            appSwitch: Switch
         }
     }
 </script>
