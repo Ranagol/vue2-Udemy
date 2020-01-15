@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-12">
                 <app-quote><!--We want to pass this block of code with html tags to the App.vue all together. Solution: slots -->
-                    <h2>{{ quoteTitle }}</h2>
-                    <p>A wonderful quote</p>
+                    <h2 slot="title">{{ quoteTitle }}</h2>
+                    <p slot="content">A wonderful quote</p>
                 </app-quote>
             </div>
         </div>

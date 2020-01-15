@@ -1,6 +1,14 @@
 <template>
   <div>
-    <slot></slot>
+    
+    <div class="title">
+      <slot name="title"></slot><!-- example for named slot: title goes here -->
+    </div>
+    <hr>
+    
+    <div>
+      <slot name="content"></slot><!-- example for named slot: content goes here -->
+    </div>
   </div>
 </template>
 
@@ -20,6 +28,10 @@ div{
   padding: 30px;
   margin: 30px auto;
   text-align: center;
+}
+
+.title{
+  font-style: italic;
 }
 
 
