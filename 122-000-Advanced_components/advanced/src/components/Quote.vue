@@ -3,11 +3,12 @@
     
     <div class="title">
       <slot name="title"></slot><!-- example for named slot: title goes here -->
-    </div>
+      <span style=" color: #ccc"><slot name="subtitle">The subtitle</slot></span>
+    </div><!--'The subtitle is the default content for this slot. -->
     <hr>
     
     <div>
-      <slot name="content"></slot><!-- example for named slot: content goes here -->
+      <slot></slot><!--This is an unnamed slot, which is a default slot for Vue. Title will got to the title slot, and the unnamed content will go automatically to this unnamed slot. -->
     </div>
   </div>
 </template>
