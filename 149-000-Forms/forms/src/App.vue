@@ -35,11 +35,13 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
                     <label for="message">Message</label><br>
-                    <!-- Interpolation between <textarea>{{ test }}</textarea> doesn't work!-->
+                    
                     <textarea
-                            id="message"
-                            rows="5"
-                            class="form-control"></textarea>
+                        id="message"
+                        rows="5"
+                        class="form-control"
+                        v-model="message">
+                    </textarea><!-- With <textarea>{{ thisTypeOfEchoing }}</textarea> doesn't work!, we must use v-model.-->
                 </div>
             </div>
             <div class="row">
@@ -47,33 +49,34 @@
                     <div class="form-group">
                         <label for="sendmail">
                             <input
-                                    type="checkbox"
-                                    id="sendmail"
-                                    value="SendMail"> Send Mail
+                                type="checkbox"
+                                id="sendmail"
+                                value="SendMail"
+                                v-model="sendMail"> Send Mail
                         </label>
                         <label for="sendInfomail">
                             <input
-                                    type="checkbox"
-                                    id="sendInfomail"
-                                    value="SendInfoMail"> Send Infomail
-                        </label>
+                                type="checkbox"
+                                id="sendInfomail"
+                                value="SendInfoMail"
+                                v-model="sendMail"> Send Infomail
+                        </label><!--Here the use decides which type of mail he would like to receive. We want to put this 'SendMail' and 'SendInfomail' input values (so both, together!) into the sendMail array in the data. Later, in the 'Your data displayed' we will use v-for to display these input values -->
                     </div>
-
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
                     <label for="male">
                         <input
-                                type="radio"
-                                id="male"
-                                value="Male"> Male
+                            type="radio"
+                            id="male"
+                            value="Male"> Male
                     </label>
                     <label for="female">
                         <input
-                                type="radio"
-                                id="female"
-                                value="Female"> Female
+                            type="radio"
+                            id="female"
+                            value="Female"> Female
                     </label>
                 </div>
             </div>
@@ -81,8 +84,8 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
                     <label for="priority">Priority</label>
                     <select
-                            id="priority"
-                            class="form-control">
+                        id="priority"
+                        class="form-control">
                         <option></option>
                     </select>
                 </div>
@@ -91,7 +94,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <button
-                            class="btn btn-primary">Submit!
+                        class="btn btn-primary">Submit!
                     </button>
                 </div>
             </div>
@@ -109,10 +112,10 @@
                         <p>Mail: {{ userData.email }}</p><!-- this is how we can echo grouped data -->
                         <p>Password: {{ userData.password }} </p>
                         <p>Age: {{ userData.age }}</p>
-                        <p>Message: </p>
+                        <p style="white-space: pre">Message: {{ message }} </p><!--Problem: we don't echo line breaks. Solution: we do this CSS trick with the style="white-space: pre"-->
                         <p><strong>Send Mail?</strong></p>
                         <ul>
-                            <li></li>
+                            <li v-for="item in sendMail">{{ item }}</li>
                         </ul>
                         <p>Gender:</p>
                         <p>Priority:</p>
@@ -132,7 +135,9 @@
                     email: '',
                     password: '',
                     age:27
-                }
+                },
+                message:'A new message',//this is just a preppopulated text here, this will change...
+                sendMail: [],
                 
             }
         }
