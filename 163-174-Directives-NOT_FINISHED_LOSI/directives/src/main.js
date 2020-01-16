@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-//We are globally registering our customer directive here, below:
+//We are globally registering our customer directive here, below (the other way is local registration):
 
 Vue.directive('highlight',{//first argument is the name of the directive (without the v- part). binding is our v-highlight. .value is whatever we put into the v-highlight=" ".
 
@@ -10,7 +10,7 @@ Vue.directive('highlight',{//first argument is the name of the directive (withou
 
     if(binding.modifiers['delayed']){//we want to check if our binding has modifiers array (this is always an array), and we want to see if this modifiers array contains 'delayed'. If so, then...
 
-      delay = 3000;//...set the delay time to 3 seconds. This allows us to se a timer...
+      delay = 3000;//...set the delay time to 3 seconds. This allows us to set a timer...
     }
 
     setTimeout(() => {// this is the callback function:() =>...
