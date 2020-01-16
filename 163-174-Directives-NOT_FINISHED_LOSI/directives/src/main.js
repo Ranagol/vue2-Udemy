@@ -6,7 +6,7 @@ import App from './App.vue'
 Vue.directive('highlight',{//first argument is the name of the directive (without the v- part). binding is our v-highlight. .value is whatever we put into the v-highlight=" ".
 
   bind(el, binding, vnode){
-    var delay = o;//delay time by default is 0
+    var delay = 0;//delay time by default is 0
 
     if(binding.modifiers['delayed']){//we want to check if our binding has modifiers array (this is always an array), and we want to see if this modifiers array contains 'delayed'. If so, then...
 
