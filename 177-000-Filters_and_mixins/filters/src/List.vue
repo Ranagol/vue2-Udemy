@@ -15,6 +15,10 @@ import { fruitMixin } from './fruitMixin';//import the fruitMixin constant from 
 
 export default {
   mixins: [fruitMixin], //mixins is a built in array where we place our mixins
+
+  created(){
+    console.log('Created logged from List.vue');//this log will be created after the fruitMixing log. Mixin goes first. Than goes the component. The component always has the last word.
+  }
 }
 </script>
 

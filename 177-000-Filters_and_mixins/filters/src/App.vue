@@ -31,15 +31,15 @@
 
     import List from './List.vue';//here we imported the List component to our App.vue
 
-    import { fruitMixin } from './fruitMixin';//import the fruitMixin constant from the fruitMixin.js file
+    import { fruitMixin } from './fruitMixin';//import the fruitMixin constant from the fruitMixin.js file. This is the 2 step for the mixin: the importing.
 
     export default {
-        mixins: [fruitMixin], //mixins is a built in array where we place our mixins
+        mixins: [fruitMixin], //mixins is a built in array where we place our mixins. This is the 3 step for the mixin.
 
         data(){
             return{
                 text: 'Hello there!',
-                filterText: '',//this is empty at the beginning
+                
             }
         },
 
