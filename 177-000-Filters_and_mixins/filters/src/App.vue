@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <h1>Filters and mixins</h1>
+                <h1>Filters and mixins from App.vue</h1>
                 <p>Our text without filtering: {{ text}}</p>
                 <p>Our text with the toUppercase filter: {{ text | toUppercase }}</p><!-- | toUppercase this is how we activate our filter on the text data. -->
                 <p>Our text with multiple filters: {{ text | toUppercase | toLowercase }}</p><!-- Here we are using multiple filters. This is how we can chain filters-->
@@ -18,6 +18,8 @@
                 <ul>
                     <li v-for="fruit in filteredFruits">{{ fruit }}</li>
                 </ul>
+                <hr>
+                <app-list></app-list>
                 
             </div>
         </div>
@@ -26,11 +28,17 @@
 
 <script>
 //a filter can transform some output into a template. Example, a filter takes a lowercase string and transforms it into uppercase string. Our filter should do this.
+
+    import List from './List.vue';//here we imported the List component to our App.vue
+
+    import { fruitMixin } from './fruitMixin';//import the fruitMixin constant from the fruitMixin.js file
+
     export default {
+        mixins: [fruitMixin], //mixins is a built in array where we place our mixins
+
         data(){
             return{
                 text: 'Hello there!',
-                fruits: ['apple', 'banana', 'mango', 'melon'],
                 filterText: '',//this is empty at the beginning
             }
         },
@@ -42,12 +50,8 @@
             }
         },
 
-        computed: {
-            filteredFruits(){
-                return this.fruits.filter((element) => {//filter() is a built in JS function. ()=> is a callback function.
-                    return element.match(this.filterText) //in this callback we must return all the elements that we want to be filtered. So what we are saying here: return all elements that match the filterText. match() is a built in JS function.
-                });
-            }
+        components: {//here we are registering locally the List component.
+            appList: List//List will go into the <appList></appList>
         }
     }
 </script>
