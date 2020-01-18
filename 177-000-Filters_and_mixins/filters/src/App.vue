@@ -20,6 +20,7 @@
                 </ul>
                 <hr>
                 <app-list></app-list>
+                <button @click="fruits.push('berries')">Add new item (Mixins and scope topic)</button><!--This fruits is the fruits array in the fruitMixin.js -->
                 
             </div>
         </div>
