@@ -5,8 +5,9 @@ import { routes } from './routes';//import the routes constant array from the ro
 
 Vue.use(VueRouter);//... and this is the 3 step: enabling the vue-router. Now, we have to register routes, in the routes.js, which will be imported into the main.js. (The route registering can be done just in the main.js too)
 
-const router = new VueRouter({//here we are creating our new VueRouter object
-  routes//this is the routes constant that we imported from routes.js
+const router = new VueRouter({//here we are creating our new VueRouter object. 
+  routes,//this is the routes constant that we imported from routes.js
+  mode: 'history',//We have 2 routing styles: one with the # ('hash', this is the default mode), and one without the #('history'). We can choose between these two styles, in this mode section. We have choosen 'history'.
 });
 
 new Vue({
