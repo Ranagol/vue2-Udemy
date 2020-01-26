@@ -1,6 +1,7 @@
 <template>
     <div>
-        <p>Counter.vue: is doing the button logic. It is sending the data to Vuex store.</p>
+        <hr>
+        <p>AnotherCounter.vue: is doing the button logic too. It is ALSO sending the data to Vuex store.</p>
         <button class="btn btn-primary" @click="increment">Increment</button>
         <button class="btn btn-primary" @click="decrement">Decrement</button>
     </div>
@@ -10,8 +11,8 @@
     import { mapMutations } from 'vuex';
     export default {
         methods: {
-            ...mapMutations([
-                'increment',//@click="increment" from the button is calling this 'increment' here, and it will call the increment in the mutations.
+             ...mapMutations([
+                'increment',
                 'decrement'
             ])
         }
