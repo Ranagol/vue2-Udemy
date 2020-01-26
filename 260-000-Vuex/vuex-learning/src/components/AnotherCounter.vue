@@ -8,7 +8,8 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+//The AnotherCoutner.vue was connected directly with mutations. But now, we will use here async/delayed functions, so we must connect the AnotherCounter.vue with actions. So we import mapActions.
+    import { mapActions } from 'vuex';
     export default {
         methods: {
              ...mapMutations([

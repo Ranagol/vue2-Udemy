@@ -1,4 +1,3 @@
-//here we will need some helpers from the Vuex package
 // how to install vuex: npm install --save vuex
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -32,6 +31,32 @@ export const store = new Vuex.Store({//this Store() is a special method, where w
 
     decrement: state => {//From now on, these central increment and decrement functions will be called from Counter.vue
       state.counter--;
+    }
+    
+  },
+//Problem with mutations: they can't be async. Aka mutation function can't be delayed in time, they have to change the state immediatelly. But what if we need to run async tasks too? How to combine async tasks with mutations? We need to put something (Actions) between our trigger child component and the mutations. In Actions we can run delayed (async) tasks. From Actions we only commit the mutations when the task is done. So, now we want our button behaviour to be delayed for 1 second.
+  actions: {
+    //THESE TWO ARE NOT DELAYED
+    increment: context => {//althoguh there is an increment function in mutations too, there is no conflict, because that is in a different object. With the increment in the actions we are calling the increment in mutations?
+
+      context.commit('increment');//context is givig us acces to commit(). Context is an object.
+    },
+    
+    decrement: context => {
+      context.commit('decrement');
+    },
+
+
+    //THESE TWO ARE DELAYED (also: the context and the ({ commit}) are giving the same result.)
+    asyncIncrement: ({ commit }) =>{//here we are receiving directly the commit as argument
+      setTimeout(() => {
+        commit('increment');
+      },1000);//the asyncIncrement and the increment function are the same, the only difference is, that the asyncIncrement is delayed
+    },
+    asyncDecrement: ({ commit }) => {
+      setTimeout(() => {
+        commit('decrement');
+      }, 1000);
     }
   }
 });
