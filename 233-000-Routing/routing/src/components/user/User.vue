@@ -10,13 +10,18 @@
 
 <script>
 export default {
-    methods: {
-        data(){
+
+    data(){
             return {
                 //this here is about how to fetch the data from the url
-                id: 11//this.$route.params.id,//the id will the this. Vue instance's $route object's paramter's (yes, the $route object has a params object in it...) id, (which will be passed thorugh the url)
+                id: this.$route.params.id,//the id will the this. Vue instance's $route object's paramter's (yes, the $route object has a params object in it...) id, (which will be passed thorugh the url)
             }
         },
+
+
+
+    methods: {
+        
 
         navigateToHome(){
             this.$router.push('/'); //we are accesing this Vue instance (with this), and there we can acces our Vue router ($router). '/' = because it means url for the home link

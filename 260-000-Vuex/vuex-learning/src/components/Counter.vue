@@ -9,10 +9,10 @@
     export default {
         methods: {
             increment() {
-                this.$emit('updated', 1);
+                this.$store.state.counter++;//in Vue a $ is a sign, that this object is not something that we created, this is built in Vue. This function now is accessing the central store, and updating the counter property there.
             },
             decrement() {
-                this.$emit('updated', -1);
+                this.$store.state.counter--;
             }
         }
     }
