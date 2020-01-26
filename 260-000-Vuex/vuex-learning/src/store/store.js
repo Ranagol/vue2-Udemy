@@ -18,6 +18,10 @@ export const store = new Vuex.Store({//this Store() is a special method, where w
     doubleCounter: state => {//doubleCounter is an ES6 function. state is the argument.
 
       return state.counter * 2;
+    },
+
+    stringCounter: state => {
+      return state.counter + ' Clicks';
     }
   }  
   

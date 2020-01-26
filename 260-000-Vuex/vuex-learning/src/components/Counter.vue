@@ -1,5 +1,6 @@
 <template>
     <div>
+        <p>Counter.vue: is doing the button logic</p>
         <button class="btn btn-primary" @click="increment">Increment</button>
         <button class="btn btn-primary" @click="decrement">Decrement</button>
     </div>
