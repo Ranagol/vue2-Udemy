@@ -6,7 +6,7 @@
     export default {
         computed: {
             counter(){
-                return this.$store.getters.doubleCounter;
+                return this.$store.getters.doubleCounter;//A getter gets the state form the store, does the calculation. Then this calculation is sent to the child property.
             }
         }
     }

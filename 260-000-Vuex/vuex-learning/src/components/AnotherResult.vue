@@ -14,10 +14,10 @@
 
             //... tells JS: pull out all the properties and methods from this object here, and create separate key-value pairs for each of them. This way we can still have our computed properties beside the mapGetters - together. Without the ... it would not work.
 
-            ...mapGetters([//here we are using the imported mapGetters() function. It uses an array [] as an argument. mapGetters will map all the functions from the getters, and with the mapGetters we can just simply get these functions
+            ...mapGetters([//here we are using the imported mapGetters() function. It uses an array [] as an argument. mapGetters will map all the functions from the getters, and with the mapGetters we can just simply get these functions. A getter gets the state form the store, does the calculation. Then this calculation is sent to the child property. This will create automatically computed properties to fetch these functions.
 
-            'doubleCounter',
-            'stringCounter'//this will create automatically computed properties to fetch these functions.
+            'doubleCounter',// use the 'doubleCounter' from the getters.
+            'stringCounter'//use the 'stringCounter' from the getters.
             ])
         }
         
