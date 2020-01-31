@@ -1,9 +1,9 @@
 <template>
     <div>
         <hr>
-        <p>AnotherCounter.vue: is doing the button logic too. It is ALSO sending the data to Vuex store.</p>
-        <button class="btn btn-primary" @click="increment(100)">Increment</button>
-        <button class="btn btn-primary" @click="decrement">Decrement</button>
+        <p>AnotherCounter.vue: is doing the button logic too. It is ALSO sending the data to Vuex store. This is the DELAYED version. </p>
+        <button class="btn btn-primary" @click="asyncIncrement({by: 50, duration: 500})">asyncIncrement</button><!--This is the way how we can send more than one argument or payload from here to vuex store. Change by 50, and make the delay time 500 ms.  -->
+        <button class="btn btn-primary" @click="asyncDecrement({by: 50, duration: 500})">asyncDecrement</button>
     </div>
 </template>
 
@@ -15,8 +15,8 @@
     export default {
         methods: {
              ...mapActions([
-                'increment',//soooo... It seems to me that the @click="increment">Increment</button> from the top will activate this 'increment', which will lead to increment function in the actions.
-                'decrement'
+                'asyncIncrement',//soooo... It seems to me that the @click="asyncIncrement">asyncIncrement</button> from the top will activate this 'asyncIncrement', which will lead to asyncIncrement function in the actions.
+                'asyncDecrement'
             ]),
             
         }
