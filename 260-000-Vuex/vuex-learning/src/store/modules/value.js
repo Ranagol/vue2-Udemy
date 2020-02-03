@@ -1,0 +1,1 @@
+//we could move all the value related stuff from store.js to value.js, we just didn't do it. Because: we used all the value stuff to demonstrate the usefullnes of the actions.js, 
