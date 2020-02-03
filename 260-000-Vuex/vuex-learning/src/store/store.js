@@ -9,10 +9,12 @@ export const store = new Vuex.Store({//this Vuex.Store() is a special method, wh
   
   state: {//this state property is built in. In this 'state', we will store all the properties of our application
     
-    counter: 0 //for example, first this counter was actually in the App.vue data. Now, this counter is in this central store now. We are receving all the changes here from Counter.vue and AnotherCounter.vue, and forwarding them to Result.vue and AnotherResult.vue.
+    counter: 0, //for example, first this counter was actually in the App.vue data. Now, this counter is in this central store now. We are receving all the changes here from Counter.vue and AnotherCounter.vue, and forwarding them to Result.vue and AnotherResult.vue.
+
+    value: 0,//this value will be used in our vuex store and the 2-way binding example.
   },
 
-  getters: {//A getter gets the state form the store, does the calculation. Then this calculation is sent to the child property (to the Result.vue and to the AnotherResult.vue). Remeber: getters are getting the data from Vuex store, and manipulating with it. 
+  getters: {//A getter gets the state from the store, and does the calculation. Then this calculation is sent to the child property (to the Result.vue and to the AnotherResult.vue). Remeber: getters are getting the data from Vuex store, and manipulating with it. 
 
     doubleCounter: state => {//doubleCounter is an ES6 function. state is the argument.
 
@@ -21,6 +23,10 @@ export const store = new Vuex.Store({//this Vuex.Store() is a special method, wh
 
     stringCounter: state => {
       return state.counter + ' Clicks';
+    },
+
+    value: state => {//we will get the value from the store with this
+      return state.value;
     }
   },  
 
@@ -33,6 +39,10 @@ export const store = new Vuex.Store({//this Vuex.Store() is a special method, wh
 
     decrement: (state, payload) => {//From now on, these central increment and decrement functions will be called from Counter.vue
       state.counter-= payload;
+    },
+
+    updateValue: (state, payload) => {
+      state.value = payload;//we are changing the vuex store value value :)
     }
   },
 //Problem with mutations: they can't be async. Aka mutation function can't be delayed in time, they have to change the state immediatelly. But what if we need to run async tasks too? How to combine async tasks with mutations? We need to put something (Actions) between our trigger child component and the mutations. In Actions we can run delayed (async) tasks. From Actions we only commit the mutations when the task is done. Example for this: we want our button behaviour to be delayed for 1 second.
@@ -60,6 +70,10 @@ export const store = new Vuex.Store({//this Vuex.Store() is a special method, wh
       setTimeout(() => {
         commit('decrement', payload.by);
       }, payload.duration);
+    },
+
+    updateValue: ({commit}, payload) => {
+      commit('updateValue', payload);
     }
   }
 });
