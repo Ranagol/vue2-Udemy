@@ -7,6 +7,7 @@
 
 <script>
     import { mapGetters } from 'vuex';//here we are importing mapGetters function
+    
 
     export default {
 

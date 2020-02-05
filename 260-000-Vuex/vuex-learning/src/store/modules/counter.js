@@ -1,4 +1,5 @@
-//although we moved all counter related stuff from the central store (store.js) to counter.js, we still have only one central store with one central state working.
+//although we moved all counter related stuff from the central store (store.js) to counter.js, we still have only one central store with one central state working. 
+
 
 const state = {
   counter: 0, //for example, first this counter was actually in the App.vue data. Now, this counter is in this central store now. We are receving all the changes here from Counter.vue and AnotherCounter.vue, and forwarding them to Result.vue and AnotherResult.vue.
