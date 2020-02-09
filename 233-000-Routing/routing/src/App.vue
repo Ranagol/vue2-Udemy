@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <h1>Routing</h1>
-                <h5>Routing switches dynamically all the components below</h5>
+                <h5>Routing switches dynamically all the components below (all this is in App.vue)</h5>
                 <hr>
                 <app-header></app-header>
                 <router-view></router-view><!--The routed components will be loaded here. The router-view is a built in component, it comes with Vue. Vue will load the component that has to be loaded into the <router-view></router-view> -->
