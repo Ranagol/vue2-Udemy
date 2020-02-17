@@ -25,10 +25,14 @@ export const routes = [// the constant routes is an array that will store our ro
 
     { path: '', component: UserStart},//this will be actually just /user 
 
-    { path: ':id', component: UserDetail},//this will be /user/:id (we are adding up parent url /user with the child url /:id)
+    { path: ':id', component: UserDetail},//this will be /user/:id (we are adding up parent url /user with the child url /:id). sometimes we want to pass data in/with the url, for example an id. Example user/10. So we could load this user page. In this case we would use '/user/:id' will be a dynamic piece, we need it for passing id's.
 
     { path: ':id/edit', component: UserEdit, name: 'userEdit'},//this will be /user/:id/edit. These three routes wont be placed in the App.vue, they will be placed in User.vue. With the name: 'userEdit' part we just name our route.
 
-  ]},//sometimes we want to pass data in/with the url, for example an id. Example user/10. So we could load this user page. In this case we would use '/user/:id' will be a dynamic piece, we need it for passing id's.
+  ]},//------------------ end of children routes-----------------------
+ 
+  { path: '/redirect-me', redirect: { name: 'home'} },//if the user requests /redirect-me url, he will be redirected to /. Problem: this works only with redirect-me url. It does not work with ANY non existent url. The solution is below: use *. * = anything.
+
+  { path: '*', redirect: '/'}
 
 ];
