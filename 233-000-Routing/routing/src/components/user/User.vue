@@ -17,7 +17,7 @@ export default {
 
     methods: {
         navigateToHome(){
-            this.$router.push('/'); //we are accesing this Vue instance (with this), and there we can acces our Vue router ($router). '/' = because it means url for the home link
+            this.$router.push({ name: 'home'}); //we are accesing this Vue instance (with this), and there we can acces our Vue router ($router). the / route is name home in routes.js, so we can use 'home' instead of /.
         }
     }
   
