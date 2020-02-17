@@ -9,6 +9,7 @@
                 <router-view name="header-top"></router-view><!--This is for our Header.vue in all cases, except where we are in users. In that case we don't want our Header.vue on the top, we want it on the bottom. For this, we use named router views. Now we just have to assign these names to these routes, in routes.js -->
                 
                 <transition name="slide" mode="out-in"><!--This is for creating transition animations when changing route. The previous site will fade out, slide out, the next page will slide in, fade in. -->
+
                     <router-view></router-view><!--The routed components will be loaded here. The router-view is a built in component, it comes with Vue. Vue will load the component that has to be loaded into the <router-view></router-view>. This routerview is unnamed, because this is the default router view, where everything loads -->
                 </transition>
                 
@@ -31,7 +32,9 @@
     }
 </script>
 
+
 <style>
+    /*when creating printed notes, exclude all this from style. It is not needed. */
     .slide-leave-active {
         transition: opacity 1s ease;
         opacity: 0;

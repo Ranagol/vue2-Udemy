@@ -8,7 +8,29 @@ Vue.use(VueRouter);//... and this is the 3 step: enabling the vue-router. Now, w
 const router = new VueRouter({//here we are creating our new VueRouter object. 
   routes,//this is the routes constant that we imported from routes.js
   mode: 'history',//We have 2 routing styles: one with the # ('hash', this is the default mode), and one without the #('history'). We can choose between these two styles, in this mode section. We have choosen 'history'.
+
+  scrollBehavior(to, from, savedPosition){//wit this we can modify scroll behaviour
+
+    if(savedPosition){// if there is a savedPosition, then scroll there
+      return savedPosition;
+    }
+    
+    if(to.hash){
+      return { selector: to.hash };//if there is a hash (element id) already set up where to scroll, then cool, scroll there...
+    }
+
+    return { x:0, y:700,};//... otherwise, we return here an object that has x and y coordinates where we want Vue to scroll automatically 700 px down, if the route is loaded
+  }
 });
+
+//1 option where to put before enter route guard. This should be used for some generic checks. It is executed all the time, since it is executed before every route.
+router.beforeEach((to, from, next) => {//beforeEach method in the router means execute this before each routing action that may occur. to=where we want to navigate. from= the route where we coming from. next = callback, that we can execute to let the request continue it's journey.
+
+  console.log('global beforeEach');
+  next();//important> next() must be executed to allow the routing action to continue its journey.
+});
+
+
 
 new Vue({
   el: '#app',
