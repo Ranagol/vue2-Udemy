@@ -4,7 +4,7 @@
         <hr>
         <button @click="navigateToHome" class="btn btn-primary">Go to Home page</button><!--In this example we want to go from this (User) page to the Home page, with a button click -->
         <hr>
-        <div>Here we are placing the 3 subroutes (UserDetail, UserEdit, UserStart) below. Only one will be shown at a time, by changin the url.</div>
+        
         <router-view></router-view><!-- is a built in Vue thing. It allows us to load our router child views.-->
 
     </div>

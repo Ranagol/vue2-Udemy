@@ -3,12 +3,25 @@ import UserStart from './components/user/UserStart.vue';
 import UserDetail from './components/user/UserDetail.vue';
 import UserEdit from './components/user/UserEdit.vue';
 import Home from './components/Home.vue';
+import Header from './components/Header.vue';
 
 export const routes = [// the constant routes is an array that will store our routes. Every route will be an object.
 
-  { path: '', component: Home, name: 'home'},//the domain by itself will be the home, there is not need for additional link. If there is only the bare domain url, that will lead us to the home component. Also, we named the home route 'home'.
+  { path: '', name: 'home', components: {//the domain by itself will be the home, there is not need for additional link. If there is only the bare domain url, that will lead us to the home component. Also, we named the home route 'home'. 
+  
+  //Notice that here we have components: instead of component: . That is because we have here multiple component (we wan't our header in some case above, on the top, and in some cases below, in the bottom.)
+    
+    default: Home,//the default component is the Home component. Home.vue is imported at the top part as Home, so we can referr to Home.vue as Home...
 
-  { path: '/user', component: User, children: [//children is an array of children routes, that will be nested after /user. The /user is the parent route, and these three routes below will be the children routes.
+    'header-top': Header//when we are in the Home (or / page), the 'header-top' (see in App.vue) is populated with Header.vue
+  } },
+
+  { path: '/user', components: { 
+    
+    default: User,
+    'header-bottom': Header//when we are in the User (or /user page), the 'header-bottom' (see in App.vue) is populated with Header.vue
+
+  },children: [//children is an array of children routes, that will be nested after /user, see them below. The /user is the parent route, and these three routes (UserStart, UserDetail, UserEdit) below will be the children routes.
 
     { path: '', component: UserStart},//this will be actually just /user 
 

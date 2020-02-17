@@ -5,8 +5,10 @@
         
         <router-link 
             tag="button" 
-            :to="{ name: 'userEdit', params: { id: $route.params.id} }"
+            :to="{ name: 'userEdit', params: { id: $route.params.id}, query: { locale: 'en', q: 100} }"
             class="btn btn-primary">Edit user</router-link><!--we want to go to UserEdit.vue with this. We can see in routes.js that the url for the UserEdit.vue is /user/:id/edit. The :id in this url needs to be dynamic. We are creating our wished user/:id/edit url from three parts: "'/user/' +  $route.params.id + '/edit'". Now, instead of manually creating this url, there is a better way with route naming. We can do the route naming in routes.js. As a result, now we have { name: 'userEdit } in :to=... But this solution yet doesn't have an id. That is why we pass another argument: params: { id: $route.params.id}.
+
+            We can pass query parameters (example for this: http://example.com/path/to/page?name=ferret&color=purple). This is happening in this part: query: { locale: 'en', q: 100}. With this, if we click on Edit user 1, we will get this url: /user/1/edit?locale=en&q=100. We can also extract this data from this url. This will happen in UserEdit.vue.
         -->
 
 

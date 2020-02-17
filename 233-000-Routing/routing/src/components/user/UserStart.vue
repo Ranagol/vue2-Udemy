@@ -1,6 +1,7 @@
 <template>
     <div>
-        <p>Please select a User</p>
+        <h3>Please select a User</h3>
+        <div>Here we are placing the 3 subroutes (UserDetail, UserEdit, UserStart) below. Only one will be shown at a time, by changing the url.</div>
         <hr>
         <ul class="list-group">
         <!--We want to be able to click on User 1 or 2 or 3, and to load the given user's details. tag="li" means that these are list items in <ul></ul>. to='/user -->
