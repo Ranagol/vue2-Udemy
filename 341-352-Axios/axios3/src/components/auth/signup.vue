@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import axios from 'axios';//importing axios to this signup.vue page. With this, we can use axios here, and make http requests with axios, to the Firebase, with the onSubmit(). Our Firebase is on this link: https://axios3-24c7b.firebaseio.com/
+//we want to submit data from the signup page to Firebase, and later we want to get this data on the dashboard. To use axios, we will do an http request.
   export default {
     data () {
       return {
@@ -102,7 +104,13 @@
           hobbies: this.hobbyInputs.map(hobby => hobby.value),
           terms: this.terms
         }
-        console.log(formData)
+        console.log(formData)//here we are just consoling the request data
+
+        axios.post('https://axios3-24c7b.firebaseio.com/users.json', formData)//post(), because we are making a post request. The link is the link of our Firebase. /users.json is because we are creating a user (this will be automatically created in Firebase). formData is our JS object from above, that contains all the user data.
+
+          .then( res => console.log(res))//.then is chained to the previous line, it continous it. This post request is an async task, so we can..., we will react to the result of this request in some point in the future. This result will be a response. This is the 'res'. The function in .then is taking 'res' as an argument, and displaying it in the console log.
+
+          .catch(error => console.log(error))//...still chaining. If there is an error, use the function in the .catch(), use the error as an argument, and display it in the console log.
       }
     }
   }
