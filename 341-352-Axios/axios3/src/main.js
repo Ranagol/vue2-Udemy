@@ -10,7 +10,23 @@ axios.defaults.baseURL = 'https://axios3-24c7b.firebaseio.com';//we want to set 
 axios.defaults.headers.common['Authorization'] = 'wtf is this'  //here we can set up some global headers for axios. common means all requests will be involved whatever is this.
 
 axios.defaults.headers.get['Accepts'] = 'application/json'  //only get requests will... wtf and whatever
+//aha. Chrome/Console/Network/users.json/Headers/Request Headers: here we will have: Authorization: wtf is this and Accepts: application/json. This is what we set up here...
 
+//INTERCEPTORS
+//..are functions, that should get executed when request is being sent to Firebase, or response being received from Firebase. Interceptors are like middleware.
+const requestInterceptptor = axios.interceptors.request.use(config => {//use this function, when intercepting. This is for intercepting a request
+  console.log('Displaying request interceptor', config);
+  
+  return config;//we always must return the config, otherwise all will break
+}); 
+
+const responseInterceptor = axios.interceptors.response.use( res => {//this is for intercepting a response
+  console.log('Displaying RESPONSE interceptor',res);
+  
+  return res;//we always must return the res, otherwise all will break
+});
+axios.interceptors.request.eject(requestInterceptptor);  //Now, sometimes, we want to instantly remove interceptors
+axios.interceptors.response.eject(responseInterceptor);
 
 
 new Vue({
