@@ -7,11 +7,11 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+    import { mapMutations } from 'vuex';//we are importing the methods from the counter mutations in the central store
     export default {
         methods: {
-            ...mapMutations([
-                'increment',//@click="increment" from the button is calling this 'increment' here, and it will call the increment in the mutations.
+            ...mapMutations([//use the methods that we imported above with mapMutations
+                'increment',//@click="increment" from the button is calling this 'increment' here, and this 'increment' here will call the increment in the mutations.
                 'decrement'
             ])
         }

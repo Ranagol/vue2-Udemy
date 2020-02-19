@@ -1,17 +1,14 @@
 //although we moved all counter related stuff from the central store (store.js) to counter.js, we still have only one central store with one central state working. 
 
-
 const state = {
   counter: 0, //for example, first this counter was actually in the App.vue data. Now, this counter is in this central store now. We are receving all the changes here from Counter.vue and AnotherCounter.vue, and forwarding them to Result.vue and AnotherResult.vue.
 };
 
 const getters ={//A getter gets the state from the store, and does the calculation. Then this calculation is sent to the child property (to the Result.vue and to the AnotherResult.vue). Remeber: getters are getting the data from Vuex store, and manipulating with it. 
 
-  doubleCounter: state => {//doubleCounter is an ES6 function. state is the argument.
-
+  doubleCounter: state => {//doubleCounter is an ES6 function. state is the argument
     return state.counter * 2;
   },
-
   stringCounter: state => {
     return state.counter + ' Clicks';
   },
@@ -19,7 +16,7 @@ const getters ={//A getter gets the state from the store, and does the calculati
 
 const mutations = {//at this point, Counter.vue is sending the data to Vuex store, and Result.vue and AnotherResult.vue are getting this data. But what if we are sending data to Vuex store from 2 places, not 1? That could be a problem. Mutations are receiving the data from Counter.vue and AnotherCounter.vue and after that, mutations are setting the data in Vuex store, which is very usefull if you have more than one data source. Mutates: it changes, mutates the data in Vuex store.
     
-  increment: (state, payload) => {//this is a function called increment. The state is the argument. We received the payload fro actions/increment as an argument, through commiting...
+  increment: (state, payload) => {//this is a function called increment. The state and the payload is the argument. We received the payload from actions/increment as an argument, through commiting...
 
     state.counter+= payload;//...and here we are using the payload
   },
@@ -57,7 +54,7 @@ const actions = {//they are used for delayed tasks, and also they could be used 
   },
 };
 
-export default {//we are exporting the store, action, mutations, getters - everything from this file - to one exportable object
+export default {//we are exporting the store, action, mutations, getters - everything from this file - to one exportable object. This will be received by the store.js
   state,
   mutations,
   actions,

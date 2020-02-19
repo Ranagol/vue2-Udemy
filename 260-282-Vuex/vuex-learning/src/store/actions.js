@@ -1,3 +1,5 @@
+//this is only for the value stuff
+
 //here we are using named exports. We can export every action function. Just repeat this process
 
 export const updateValue = ({commit}, payload) => {

@@ -18,7 +18,6 @@
                 'asyncIncrement',//soooo... It seems to me that the @click="asyncIncrement">asyncIncrement</button> from the top will activate this 'asyncIncrement', which will lead to asyncIncrement function in the actions.
                 'asyncDecrement'
             ]),
-            
         }
     }
 </script>
