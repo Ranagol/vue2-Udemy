@@ -26,7 +26,10 @@ const responseInterceptor = axios.interceptors.response.use( res => {//this is f
   return res;//we always must return the res, otherwise all will break
 });
 axios.interceptors.request.eject(requestInterceptptor);  //Now, sometimes, we want to instantly remove interceptors
-axios.interceptors.response.eject(responseInterceptor);
+axios.interceptors.response.eject(responseInterceptor);//Now, sometimes, we want to instantly remove interceptors
+
+//CUSTOM AXIOS INSTANCES
+//Right now, we are always using the one global axios, which we import from the global axios package with import axios from 'axios';. But sometimes, we could want to work wiht multiple databases, multiple tables, and all on different Firebase link, and with different setups and addresses. We can do this with custom axios instances. Now, imagine that for authenticating, and for sending requests from the signin.vue and signup.vue files, we actually want to set up a different base url than the one we have on th main.js, in the axios.defaults.baseURL already.
 
 
 new Vue({

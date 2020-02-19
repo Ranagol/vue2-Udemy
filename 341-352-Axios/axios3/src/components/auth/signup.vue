@@ -69,7 +69,9 @@
 </template>
 
 <script>
-import axios from 'axios';//importing axios to this signup.vue page. With this, we can use axios here, and make http requests with axios, to the Firebase, with the onSubmit(). Our Firebase is on this link: https://axios3-24c7b.firebaseio.com/
+import axios from '../../axios-auth';//here we are importing our custom axios, instead of the previously had global axios. Now, our custom axios is in the axios-auth.js, which is two levels away, from this signup.vue, hence the '../../ part. Now we could name this imported custom axios with a different name, but Max decided that we will keep the old and confusing axios name.
+
+//importing global axios to this signup.vue page. With this, we can use axios here, and make http requests with axios, to the Firebase, with the onSubmit(). Our Firebase is on this link: https://axios3-24c7b.firebaseio.com/
 //we want to submit data from the signup page to Firebase, and later we want to get this data on the dashboard. To use axios, we will do an http request.
   export default {
     data () {
