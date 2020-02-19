@@ -106,7 +106,7 @@ import axios from 'axios';//importing axios to this signup.vue page. With this, 
         }
         console.log(formData)//here we are just consoling the request data
 
-        axios.post('https://axios3-24c7b.firebaseio.com/users.json', formData)//post(), because we are making a post request. The link is the link of our Firebase. /users.json is because we are creating a user (this will be automatically created in Firebase). formData is our JS object from above, that contains all the user data.
+        axios.post('/users.json', formData)//post(), because we are making a post request. The link is the link of our Firebase. /users.json is because we are creating a user (this will be automatically created in Firebase). formData is our JS object from above, that contains all the user data.
 
           .then( res => console.log(res))//.then is chained to the previous line, it continous it. This post request is an async task, so we can..., we will react to the result of this request in some point in the future. This result will be a response. This is the 'res'. The function in .then is taking 'res' as an argument, and displaying it in the console log.
 

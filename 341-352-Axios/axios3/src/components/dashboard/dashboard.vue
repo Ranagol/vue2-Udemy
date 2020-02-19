@@ -18,7 +18,7 @@ export default {
   },
 
   created(){//created() is a lifecycle hook in Vue
-    axios.get('https://axios3-24c7b.firebaseio.com/users.json')//here we are creating a get request with axios, we need the user data... This get request here will be activated every time when we load the dashboard page.
+    axios.get('/users.json')//here we are creating a get request with axios, we need the user data... This get request here will be activated every time when we load the dashboard page.
 
       .then( res => {//.then is chained to the previous line, it continous it. This get request is an   async task, so we can..., we will react to the result of this request in some point in the future. This result will be a response. This is the 'res'.
 
