@@ -10,6 +10,7 @@
     <h4>Watch & compute</h4>
 
     <p>Age create: <input v-model="age" type="text"></p>
+    <p>Age was changed {{ changeCounter }} times</p>
     <p>Age echo: {{ age }}</p>
     <p>Approval: {{ approval }}</p>
 
@@ -26,7 +27,12 @@
 
       data: {
         age: 0,
+        changeCounter: 0,
       },
+
+     
+
+
 
       computed: {
         approval(){

@@ -1,5 +1,4 @@
 <template><!-- template can contain only one root element (which can contain many elements). Therefore, we use a div to wrap all our elements -->
-
   <div>
     <p>Server status: {{ status }}</p>
     <hr>
@@ -8,12 +7,11 @@
 </template>
 
 <script>
-//Task: imagine that our app is tracking the state of several servers, and we want to be able to track each server. this ServerStatus.vue is simulating one server.
+//Task: imagine that our app is tracking the state of several servers, and we want to be able to track each server state ( which could be 'Normal' or 'Critical' ) separately for every server. this ServerStatus.vue is simulating one server.
 
-export default {//here we are exporting an object. Which will contain our data. Data has to be stored in a form of a function, in order to work. All this will be the root Vue instance, which will be rendered by the render: h => h(App).
-//possibly here we are using local registration??
+export default {//here we are exporting an object. Which will contain our data. Data has to be stored in a form of a function, in order to work. All this will be the root Vue instance, which will be rendered by the render: h => h(App).  is used to create local registration for Vue component.
 
-  data: function(){
+  data: function(){// be sure to declare your data properties as functions, otherwise they are not going to be reactive.
     return {
       status: 'Critical'
     }
@@ -25,5 +23,4 @@ export default {//here we are exporting an object. Which will contain our data. 
     }
   }
 }
-//once we create our component, we have to register it, in order for the component to work. We can register it globally, or locally. 
 </script>
