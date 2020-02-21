@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events2</title>
+</head>
+<body>
+  <div id="app">
+    <h4>Events2</h4>
+    <button @click="increase(2)">+2</button>
+    <p>Counter value: {{ counter }}</p>
+    <p>Testing the keyup event: <input @keyup.enter="alertMe()" type="text"></p>
+
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+
+      data: {
+        text: 'random text',
+        counter: 0,
+      },
+
+      methods: {
+        increase(number){
+          this.counter += number;
+        },
+
+        alertMe(){
+          alert('Alert! Alert!');
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>

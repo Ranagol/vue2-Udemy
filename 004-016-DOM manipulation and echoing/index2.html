@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning</title>
+</head>
+<body>
+  <div id="app">
+    <h3>Title</h3>
+    <input v-model="bindedText" type="text">
+    <p>v-model testing: {{ bindedText }}</p>
+    <p>Echoing random text: {{ text }}</p>
+    <p>Echoing a string with a method: {{ returnHello() }}</p>
+    <p>Echoing a property with a method: {{ echoProperty1() }}</p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+
+      data: {
+        text: 'random text',
+        property1: 'property1',
+        bindedText: '',
+      },
+
+      methods: {
+        returnHello(){
+          return 'Hello';
+        },
+
+        echoProperty1(){
+          return this.property1;
+        }
+      }
+
+
+    });
+  </script>
+</body>
+</html>

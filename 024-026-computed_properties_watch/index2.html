@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practising</title>
+</head>
+<body>
+  <div id="app">
+    <h4>Watch & compute</h4>
+
+    <p>Age create: <input v-model="age" type="text"></p>
+    <p>Age echo: {{ age }}</p>
+    <p>Approval: {{ approval }}</p>
+
+
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+
+      data: {
+        age: 0,
+      },
+
+      computed: {
+        approval(){
+          return this.age > 20 ? "Old enough" : "Too young";
+        }
+      }
+
+      
+
+
+    });
+
+  </script>
+  
+</body>
+</html>

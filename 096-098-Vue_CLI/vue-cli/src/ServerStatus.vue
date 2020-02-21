@@ -1,4 +1,4 @@
-<template><!-- this template can contain only one root element (which can contain many elements). Therefore, we use a div to wrap all our elements -->
+<template><!-- template can contain only one root element (which can contain many elements). Therefore, we use a div to wrap all our elements -->
 
   <div>
     <p>Server status: {{ status }}</p>

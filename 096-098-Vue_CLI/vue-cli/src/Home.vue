@@ -1,6 +1,6 @@
 <template><!--As said before, there can be only one root element in the template -->
   <div>
-    <app-server-status v-for="server in 5"></app-server-status><!-- v-for="server in 5" will create 5 servers. Simple. We create by default one server. This is a component. We can treat components as html tags. So, we can use v-for to multiply component (here we said we need 5 components). That way here we are creating 5 servers, and every one of them can be switched from Critical to Normal status.-->
+    <app-server-status v-for="server in 5"></app-server-status><!-- v-for="server in 5" will create 5 servers. Simple. We create by default one server. This is a component. We can treat components as html tags. So, we can use v-for to multiply component (here we said we need 5 components). That way here we are creating 5 servers, and every one of them can be switched from Critical to Normal status, INDIVIDUALLY!.-->
   </div>
   
 </template>
